@@ -1,0 +1,194 @@
+//variables
+$body: hsl(233, 47%, 7%);
+$card: hsl(244, 38%, 16%);
+$accent: hsl(277, 64%, 61%);
+$accent-transparent: hsl(277, 64%, 61%, 0.5);
+$white: hsl(0, 0%, 100%);
+$white-transparent: hsla(0, 0%, 100%, 0.5);
+$paragraph: hsla(0, 0%, 100%, 0.75);
+$stat-headings: hsla(0, 0%, 100%, 0.6);
+$normal: 400;
+$thin: 300;
+$bold: 700;
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LexendDeca';
+    src: url('./fonts/LexendDeca-VariableFont_wght.ttf') format('truetype');
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url('./images/bg.webp');
+    font-family: 'Inter';
+    font-size: 0.9375rem;
+
+    @media (min-width: 48rem) {
+        text-align: left;
+    }
+    
+    .card {
+        width: min(90%, 20.62rem);
+        max-width: 100%;
+        height: 48.75rem;
+        overflow: hidden;
+        background-color: $card;
+        display: grid;
+        grid-template-columns: 1fr;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem $white-transparent,
+                    0 -0.5rem 1rem $white-transparent;
+
+        
+
+        @media (min-width: 48rem) {
+            width: min(90%, 69.37rem);
+            height: 27.87rem;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+        }
+        
+        &__image {
+            grid-column: 1;
+            background-color: $accent;    
+
+            @media (min-width: 48rem) {
+                grid-column: 2;
+            }
+        
+            img {
+                content: url(./images/image-header-mobile.jpg);
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: right;
+                background-position: center;
+                mix-blend-mode: multiply;
+                opacity: 70%;
+            }
+        }
+
+        &__content {
+            grid-column: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem 2rem 2rem;
+            height: 100%;
+
+            @media (min-width: 48rem) {
+                grid-column: 1;
+                grid-row: 1;
+                padding: 4rem;
+            }
+
+            & h2 {
+                font-size: 1.7rem;
+                font-weight: $bold;
+                color: $white;
+                letter-spacing: 0.05rem;
+                margin-bottom: 1rem;
+                opacity: 0; 
+                transform: translateY(0.75rem); 
+                transition: opacity 0.5s ease, transform 0.5s ease; 
+
+                &.show {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                @media (min-width: 48rem) {
+                    font-size: 2.2rem;
+                    margin-bottom: 2rem;
+                }
+
+                span {
+                    color: $accent;
+                }
+            }
+
+            & p {
+                color: $paragraph;
+                font-weight: $thin;
+                line-height: 1.7;
+                text-wrap: balance;
+                opacity: 0; 
+                transform: translateY(0.75rem); 
+                transition: opacity 0.5s ease, transform 0.5s ease; 
+
+                &.show {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                @media (min-width: 48rem) {
+                    text-wrap: initial;
+                    width: 80%;
+                }
+            }
+        }
+
+        &__stats {
+            grid-column: 1;
+            display: flex;
+            flex-direction: column;
+            margin-top: 2.5rem;
+            gap: 1.7rem;
+            line-height: 1.5;
+
+            @media (min-width: 48rem) {
+                grid-column: 1;
+                grid-row: 2;
+                flex-direction: row;
+                width: 80%;
+                justify-content: space-between;
+                margin-top: auto;
+                padding-top: 1.5rem;
+            }
+
+            &-item {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                letter-spacing: 0.05rem;
+                opacity: 0; 
+                transform: translateY(0.75rem); 
+                transition: opacity 0.5s ease, transform 0.5s ease; 
+
+                &.show {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                & h3 {
+                    font-size: 1.5rem;
+                    font-weight: $bold;
+                    color: $white;
+
+                    @media (min-width: 48rem) {
+                        height: 2rem;
+                        width: 6.2rem;
+                    }
+                }
+                
+                & p {
+                    font-family: 'LexendDeca';
+                    font-weight: $thin;
+                    color: $paragraph;
+                    text-transform: uppercase;
+                    font-size: .75rem;
+                }
+            }
+        }
+    }
+
+    footer {
+        display: none;
+    }
+}
